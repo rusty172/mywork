@@ -121,14 +121,14 @@ staging_events_copy = """
                       copy staging_events from 's3://udacity-dend/log_'
                       credentials 'aws_iam_role={}'
                       json 's3://udacity-dend/log_json_path.json';
-                      """.format('arn:aws:iam::896845213185:role/dwhRole')
+                      """.format('arn:aws:iam::xxxx:role/dwhRole')
     
 
 staging_songs_copy = """
                        copy staging_songs from 's3://udacity-dend/song_'
                        credentials 'aws_iam_role={}'
                        json 'auto';
-                       """.format('arn:aws:iam::896845213185:role/dwhRole')
+                       """.format('arn:aws:iam::xxxx:role/dwhRole')
 
 """
     - FINAL tables required for the project, load data using staging tables
