@@ -26,4 +26,4 @@ start_time, hour, day, week, month, year, weekday
 
 ETL pipeline reads song_data and load_data from S3, transforms them to create five different tables, and writes them to partitioned parquet files in table directories on S3.
 
-3. Provide example queries and results for song play analysis.
+3. Provide example queries and results for song play analysis. (Refer to screenshot document)
