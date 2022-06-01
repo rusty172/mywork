@@ -26,4 +26,12 @@ start_time, hour, day, week, month, year, weekday
 
 ETL pipeline reads song_data and load_data from S3, transforms them to create five different tables, and writes them to partitioned parquet files in table directories on S3.
 
+Steps to run: 
+1. Ensure s3 output bucket is set up
+2. Set up IAM user using 4 roles (S3ReadOnly, S3FullAccess, AdminAccess, RedshiftReadOnly)
+3. Derive Access & Secret Key
+4. Update the credentials file dl.cfg
+5. Run script etl.py in the terminal
+
 3. Provide example queries and results for song play analysis. (Refer to screenshot document)
+
