@@ -74,11 +74,12 @@ CREATE TABLE IF NOT EXISTS staging_state
 immigration_table_create = """
 CREATE TABLE IF NOT EXISTS immigration
 (
- admission_no float8,
- arrival_date float,
+ admission_no float8 NOT NULL,
+ arrival_year float,
+ arrival_month float,
  state_visited varchar,
  gender char,
- visa_type char,
+ visa_type int,
  birth_year float,
  PRIMARY KEY (admission_no)
 ) 
@@ -95,12 +96,12 @@ CREATE TABLE IF NOT EXISTS state
 
 arrival_table_create = """
 CREATE TABLE IF NOT EXISTS arrival
-(arrdate date PRIMARY KEY,
- day smallint NOT NULL,
- week smallint NOT NULL,
- month smallint NOT NULL,
- year smallint NOT NULL,
- weekday int NOT NULL)
+(
+ arrival_id int IDENTITY(1,1) PRIMARY KEY,
+ arrival_year int,
+ arrival_month int,
+ visa_type int
+)
 """
 
 """
@@ -127,13 +128,14 @@ staging_state_copy = """
 """
 
 immi_table_insert = ("""
-INSERT INTO immigration (admission_no,arrival_date,state_visited,gender,visa_type,birth_year)
+INSERT INTO immigration (admission_no,arrival_year, arrival_month,state_visited,gender,visa_type,birth_year)
 SELECT DISTINCT
                 cast(admnum as bigint),
-                arrdate,
+                cast(i94yr as int),
+                cast(i94mon as int),
                 i94addr,
                 gender,
-                i94visa,
+                cast(i94visa as int),
                 biryear
 FROM staging_immi;                         
 """)
@@ -151,6 +153,16 @@ FROM staging_state
 GROUP BY state_code;
 """)
 
+arrival_table_insert = ("""
+INSERT INTO arrival
+(
+"arrival_year",
+"arrival_month",
+"visa_type"
+)
+SELECT arrival_year, arrival_month, visa_type
+FROM immigration;
+""")
 
 """
     - List of queries required in create_tables and etl programs
@@ -162,6 +174,7 @@ GROUP BY state_code;
 #insert_table_queries = [immi_table_insert, state_table_insert]
 
 copy_table_queries = [staging_immi_copy, staging_state_copy]
-create_table_queries = [staging_immi_table_create, immigration_table_create, staging_state_table_create, state_table_create]
-insert_table_queries = [immi_table_insert, state_table_insert]
-drop_table_queries = [staging_immi_table_drop, immi_table_drop, staging_state_table_drop, state_table_drop]
+create_table_queries = [staging_immi_table_create, immigration_table_create, staging_state_table_create, state_table_create, arrival_table_create]
+insert_table_queries = [immi_table_insert, state_table_insert, arrival_table_insert]
+#insert_table_queries1 = [arrival_table_insert]
+drop_table_queries = [staging_immi_table_drop, immi_table_drop, staging_state_table_drop, state_table_drop, arrival_table_drop]
