@@ -21,6 +21,7 @@ def insert_tables(cur, conn):
         cur.execute(query)
         conn.commit()
 
+
 """
     - Read the config file for connecting to the DB
     - Call the load staging table function
@@ -36,7 +37,7 @@ def main():
     cur = conn.cursor()
     
     load_staging_tables(cur, conn)
-    insert_tables(cur, conn)
+    insert_tables(cur, conn)    
 
     conn.close()
 
