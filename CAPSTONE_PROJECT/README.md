@@ -19,6 +19,9 @@
 - Provide general information about your project here.
 - What problem does it (intend to) solve? USATM collects heaps of immigration data for travellers coming in and leaving the USA. They would like to utilise this data to better allocate their marketing/advertising spend for the upcoming tourist season. 
 - What is the purpose of your project? Purpose of this project is to provide base immigration related data for the USATM advanced analytcis team to be able to draw further insights and make informed decisions about budget allocations.
+- Data Sources 
+1. I94 Immigration Data: This data comes from the USATM. A sample file has been used that is in CSV format. Link to source: https://www.trade.gov/national-travel-and-tourism-office.
+2. U.S. City Demographic Data: This data comes from OpenSoft. A sample file has been used that is in CSV format. Link to source: https://public.opendatasoft.com/explore/dataset/us-cities-demographics/export/.
 
 ## Technologies Used
 - Tech 1 - Redshift
