@@ -38,7 +38,8 @@ List the ready features here:
 
 ## Screenshots
 ![Screen Shot 2022-07-22 at 10 00 10 pm](https://user-images.githubusercontent.com/101382920/180436558-982d4605-467a-4ac9-b72f-908ce261588e.png)
-
+![Query1](https://user-images.githubusercontent.com/101382920/181001449-23656fad-ac37-4752-b736-be20943ca800.png)
+![Query2](https://user-images.githubusercontent.com/101382920/181001488-d7e6f68b-a00c-454d-ac2c-0609f36d5f82.png)
 
 ## Setup
 What are the project requirements/dependencies? Where are they listed? Project can be run with python 3 and standard libraries installed. Sequence of scripts are sql_queries.py, create_tables.py & then etl.py.
